@@ -25,56 +25,26 @@ pip install -r requirements.txt
 ```
 
 ## Datasets
-You can get the audio datasets from [GoogleDrive](https://drive.google.com/file/d/1FnpYhMaeskckxGheKjar0U4YHIdDKM6K/view). Please extract the data under the `./data/{dataset_name}/mp3/`
+You can view the datasets used directly in the data folder.
 
-## How to run VGRec
+## How to run GPAWP
+The default dataset is ACM. You need to change the corresponding parameters in pre_train.py, run.py, and retrain.py to train and evaluate on other datasets.
 
-### MFE
-
-- Coat
-
-```
-python run_MFE.py --dataset=coat --epochs=35 --lr=0.0005 --test=1 --neg_num=3 
-```
-
-- Movielens-1m
+### Pretrain
 
 ```
-python run_MFE.py --dataset=movielens1m --epochs=35 --lr=0.0005 --test=1 --neg_num=5 
-```
-
-### AGIP
-
-- Coat
+python pre_train.py
 
 ```
-python main.py --weight_decay=1e-4 --lr=0.001 --n_layers=3 --dataset=coat --recdim=64 --neg_num 3 --ens_ratio 0.8
-```
 
-- Movielens-1m
+### Tuning
 
 ```
-python main.py --weight_decay=1e-4 --lr=0.001 --n_layers=3 --dataset=movielens1m --recdim=64 --neg_num 5 --ens_ratio 0.6
+python run.py
+```
+### Retuning
+
+```
+python retrain.py
 ```
 
-
-
-## Benchmarking
-
-Coat:
-|   Metrics   | VERS |
-| ----------- | ----------- |
-|  F1@10   |    **12.68**   |
-|  Precision@10   |    **8.24**   |
-| Recall@10   |    **27.47**   |
-|  NDCG@10    |    **18.68**   |
-
-[//]: # (## Citation)
-
-[//]: # ()
-[//]: # (You are welcome to cite our paper:)
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # (```)
