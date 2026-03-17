@@ -154,13 +154,12 @@ def run_model_DBLP(args):
         for u,v in zip(*dl.links['data'][k].nonzero()):
             if (v,u) not in edge2type:
                 edge2type[(v,u)] = k+1+len(dl.links['count'])
-    # g = dgl.DGLGraph(adjM+(adjM.T))
-    g = dgl.from_scipy(adjM + adjM.T)
+    g = dgl.DGLGraph(adjM+(adjM.T))
     g = dgl.remove_self_loop(g)
     g = dgl.add_self_loop(g)
     g = g.to(device)
-    trans_g=dgl.reverse(g).to(device)
-
+    trans_g=dgl.reverse(g)
+    
     coo_adj=adjM.tocoo()
     values = coo_adj.data
     indices = np.vstack((coo_adj.row, coo_adj.col))
@@ -172,15 +171,22 @@ def run_model_DBLP(args):
     for u, v in zip(*g.edges()):
         u = u.cpu().item()
         v = v.cpu().item()
-        # e_feat.append(edge2type[(u,v)])
-        e_feat.append(edge2type.get((u, v), 0))
+        e_feat.append(edge2type[(u,v)])
+        # e_feat.append(edge2type.get((u, v), 0))
     e_feat = torch.tensor(e_feat, dtype=torch.long).to(device)
+
+    # e_feat = []
+    # edge2type = {}  # 或者保留原始 dict
+    # for u, v in zip(*g.edges()):
+    #     e_feat.append(edge2type.get((u, v), 0))
+    # e_feat = torch.tensor(e_feat, dtype=torch.long).to(device)
 
     eval_result={}
     eval_result['micro-f1']=[]
     eval_result['macro-f1']=[]
     train_time=0
     test_time=0
+    
 
     for count in range(args.tasknum):
         train_time_one_task = 0
