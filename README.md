@@ -37,12 +37,12 @@ python pre_train.py
 
 ```
 
-### Prompting and tuning
+### Prompting and Tuning
 
 ```
 python run.py
 ```
-### Evaluation
+### Prompt Evaluation
 
 ```
 python best_mask_choose.py
