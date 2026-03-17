@@ -643,7 +643,7 @@ if __name__ == '__main__':
     ap.add_argument('--dropout', type=float, default=0.5)
     ap.add_argument('--weight-decay', type=float, default=1e-6)
     ap.add_argument('--slope', type=float, default=0.05)
-    ap.add_argument('--dataset', type=str, default='DBLP')
+    ap.add_argument('--dataset', type=str, default='ACM')
     ap.add_argument('--seed', type=int, default="0")
     ap.add_argument('--tasknum', type=int, default=100)
     ap.add_argument('--shotnum', type=int, default=1)
