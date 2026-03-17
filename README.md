@@ -45,7 +45,7 @@ python run.py
 ### Prompt Evaluation
 
 ```
-python best_mask_choose.py
+python best_mask_choose.py --use_best_mask
 ```
 
 ### Prompt Pruning and Retuning
