@@ -173,11 +173,12 @@ def run_model_DBLP(args):
     shape = coo_adj.shape
 
     e_feat = []
-
     for u, v in zip(*g.edges()):
+        u = u.cpu().item()
+        v = v.cpu().item()
+        # e_feat.append(edge2type[(u,v)])
         e_feat.append(edge2type.get((u, v), 0))
     e_feat = torch.tensor(e_feat, dtype=torch.long).to(device)
-
     eval_result={}
     eval_result['micro-f1']=[]
     eval_result['macro-f1']=[]
