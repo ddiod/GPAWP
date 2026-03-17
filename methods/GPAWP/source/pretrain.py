@@ -403,7 +403,6 @@ def run_model_DBLP(args):
             samples=prompt_pretrain_sample(adjM+adjM.T, args.tuple_neg_disconnected_num)
         else:
             samples = prompt_pretrain_sample(adjM, args.tuple_neg_disconnected_num)
-        # 确保目录存在
         os.makedirs(os.path.dirname(samples_dir), exist_ok=True)
 
         np.save(samples_dir, samples)
