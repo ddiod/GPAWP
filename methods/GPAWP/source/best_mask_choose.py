@@ -621,9 +621,9 @@ if __name__ == '__main__':
     ap.add_argument('--num_subweight', type=int, default=16, help='number of weight tokens')
     ap.add_argument('--use_best_mask', action='store_true', help='apply auto masks in retrain')
     ap.add_argument('--mask_method_semantic', default='percentile')
-    ap.add_argument('--mask_param_semantic', type=float, default=20)
+    ap.add_argument('--mask_param_semantic', type=float, default=10)
     ap.add_argument('--mask_method_weight', default='percentile')
-    ap.add_argument('--mask_param_weight', type=float, default=20)
+    ap.add_argument('--mask_param_weight', type=float, default=10)
 
     args = ap.parse_args()
     run_model(args)
