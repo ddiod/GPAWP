@@ -170,6 +170,9 @@ def run_model_DBLP(args):
 
     e_feat = []
     for u, v in zip(*g.edges()):
+        u = u.cpu().item()
+        v = v.cpu().item()
+        # e_feat.append(edge2type[(u,v)])
         e_feat.append(edge2type.get((u, v), 0))
     e_feat = torch.tensor(e_feat, dtype=torch.long).to(device)
 
