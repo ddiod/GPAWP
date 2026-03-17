@@ -174,19 +174,11 @@ def run_model_DBLP(args):
         e_feat.append(edge2type[(u,v)])
         # e_feat.append(edge2type.get((u, v), 0))
     e_feat = torch.tensor(e_feat, dtype=torch.long).to(device)
-
-    # e_feat = []
-    # edge2type = {}  # 或者保留原始 dict
-    # for u, v in zip(*g.edges()):
-    #     e_feat.append(edge2type.get((u, v), 0))
-    # e_feat = torch.tensor(e_feat, dtype=torch.long).to(device)
-
     eval_result={}
     eval_result['micro-f1']=[]
     eval_result['macro-f1']=[]
     train_time=0
     test_time=0
-    
 
     for count in range(args.tasknum):
         train_time_one_task = 0
