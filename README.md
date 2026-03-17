@@ -28,7 +28,7 @@ pip install -r requirements.txt
 You can view the datasets used directly in the data folder.
 
 ## How to run GPAWP
-The default dataset is ACM. You need to change the corresponding parameters in pre_train.py, run.py, and retrain.py to train and evaluate on other datasets.
+The default dataset is DBLP. You need to change the corresponding parameters in pre_train.py, run.py, best_mask_choose.py, and retrain.py to train and evaluate on other datasets.
 
 ### Pretrain
 
@@ -37,12 +37,18 @@ python pre_train.py
 
 ```
 
-### Tuning
+### Prompting and tuning
 
 ```
 python run.py
 ```
-### Retuning
+### Evaluation
+
+```
+python best_mask_choose.py
+```
+
+### Prompt Pruning and Retuning
 
 ```
 python retrain.py
